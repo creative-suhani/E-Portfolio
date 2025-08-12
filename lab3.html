@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 3 — Speech & Introduction to Unit 3</title>
+    <!-- Google Fonts for Playfair Display and Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        * Reset and Base Styles
+        * This section sets up the foundational look and feel of the page.
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            perspective: 1200px;
+            perspective-origin: center center;
+            overflow-x: hidden;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(-45deg, #f9c5d1, #fbd3e9, #d8b4f8, #e0c3fc);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+
+        /* Keyframe for the dreamy gradient background */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /*
+        * Navigation
+        * Styles for the fixed, translucent navigation bar.
+        */
+        nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 120;
+            background: rgba(255, 182, 193, 0.3);
+            backdrop-filter: blur(12px) saturate(140%);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3), 0 0 15px rgba(186, 85, 211, 0.25);
+            border: 1px solid rgba(255, 105, 180, 0.5);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            color: #b955d3;
+            text-decoration: none;
+            border-radius: 9999px;
+            transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a[aria-current="page"], nav a:hover {
+            background: linear-gradient(90deg, #f69acb, #bb55d4);
+            color: white;
+            box-shadow: 0 4px 20px rgba(246, 154, 203, 0.6), 0 0 10px rgba(187, 85, 212, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .splendour-divider {
+            width: 100%;
+            height: 2px;
+            position: relative;
+            margin: 2.5rem 0;
+            background: transparent;
+        }
+
+        .splendour-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #ffb6c1, #e0c3fc, #ffb6c1, transparent);
+            border-radius: 2px;
+            opacity: 0.7;
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+            animation: pulsate 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulsate {
+            0% {
+                transform: translate(-50%, -50%) scaleX(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50%, -50%) scaleX(1.05);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 920px) {
+            nav {
+                left: 10px;
+                transform: none;
+                padding: 0.5rem 0.8rem;
+            }
+            nav ul {
+                gap: 0.6rem;
+            }
+        }
+
+        /*
+        * Main container for the lab content
+        */
+        .lab-document {
+            max-width: 900px;
+            margin: 8rem auto 3rem;
+            padding: 4rem;
+            background: rgba(255, 245, 250, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(187, 85, 212, 0.2), 0 8px 20px rgba(246, 154, 203, 0.25);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .lab-document {
+                margin: 6rem 1rem 2rem;
+                padding: 2rem;
+            }
+        }
+
+        /*
+        * Text and Button Styles
+        */
+        h1, h2, h3, .lead, p, ul, ol {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+            color: #5a3e36;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(270deg, rgba(255, 182, 193, 1), rgba(255, 105, 180, 1), rgba(186, 85, 211, 1), rgba(255, 105, 180, 1), rgba(255, 182, 193, 1));
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 6s ease infinite;
+            background-clip: text;
+            text-fill-color: transparent;
+            -webkit-text-stroke: 0.5px rgba(255, 182, 193, 0.7);
+            text-stroke: 0.5px rgba(255, 182, 193, 0.7);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #b955d3;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #e072a3;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lead {
+            font-size: 1.4rem;
+            color: #a0522d;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        p, ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #a55c76;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            color: white;
+            padding: 0.8rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #ffd700, #ff69b4);
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /*
+        * Interactive Effects & Animations
+        */
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /*
+        * Animation on scroll
+        */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body data-page="lab3">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="learning.html">Learnings</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="explore.html">Explore</a></li>
+        </ul>
+    </nav>
+
+    <main class="page">
+        <div class="lab-document">
+            <header>
+                <h1 class="reveal">Lab 3 — Speech & Introduction to Unit 3</h1>
+                <p class="meta reveal"><strong>Date:</strong> 6 August, 2025 &nbsp; • &nbsp; <strong>Course Code:</strong> AET 501 / SET 501</p>
+                <p class="lead reveal">Details about the speaking activity and an introduction to the core concepts of Organizational Behavior.</p>
+            </header>
+
+            <!-- New "splendour" divider added here -->
+            <div class="splendour-divider"></div>
+
+            <section>
+                <h2 class="reveal">Summary</h2>
+                <p class="reveal">
+                    In the third lab session, our teacher explained speech delivery techniques — covering structure, tone, clarity, and audience engagement. We learned how to prepare and present speeches effectively, focusing on confidence and clear communication.
+                </p>
+
+                <h3 class="reveal">Introduction to Unit 3: Concept of OB</h3>
+                <ul class="reveal">
+                    <li><strong>Motivation:</strong> Importance, types, and effect on work behavior.</li>
+                    <li><strong>Groups in Organizations:</strong> Group decision-making techniques, teamwork, and interpersonal relations.</li>
+                    <li><strong>Leadership:</strong> Meaning, importance, and the difference between leaders and managers.</li>
+                </ul>
+
+                <h3 class="reveal">Interactive Speaking Activity</h3>
+                <p class="reveal">
+                    At the end of the class, an interactive speaking activity was conducted. A boy from the class gave small topics to each student, and everyone had to speak about their assigned topic on the spot. This helped us improve our impromptu speaking skills and boosted confidence in expressing ideas spontaneously.
+                </p>
+            </section>
+
+            <!-- The original "splendour" divider remains -->
+            <div class="splendour-divider"></div>
+
+<div class="btn-container">
+    <a class="btn" href="lab2.html">← Previous Lab</a>
+    <a class="btn" href="learning.html">Back to Learnings</a>
+    <a class="btn" href="video.html">Go to Video →</a>
+</div>
+
+        </div>
+    </main>
+
+    <script>
+        // This script handles the reveal-on-scroll animation and button effects.
+        document.addEventListener('DOMContentLoaded', () => {
+            // Find all elements with the 'reveal' class
+            const revealElements = document.querySelectorAll('.reveal');
+            const labDocument = document.querySelector('.lab-document');
+            const buttons = document.querySelectorAll('.btn-container .btn');
+
+            // Options for the Intersection Observer
+            const options = {
+                root: null, // The viewport is the root
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            };
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is intersecting (i.e., in the viewport)
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Add the 'visible' class to trigger the animation
+                        observer.unobserve(entry.target); // Stop observing after it's animated once
+                    }
+                });
+            }, options);
+
+            // Observe each element
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Add the click effect to the buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Add the glowing border effect to the main document
+                    labDocument.classList.add('lit-border-effect');
+
+                    // Remove the effect after 1.5 seconds (matches the animation duration)
+                    setTimeout(() => {
+                        labDocument.classList.remove('lit-border-effect');
+                    }, 1500);
+
+                    // Create and animate the sparkle trail
+                    const rect = button.getBoundingClientRect();
+                    const clickX = e.clientX;
+                    const clickY = e.clientY;
+
+                    for (let i = 0; i < 15; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        document.body.appendChild(sparkle);
+
+                        // Set the sparkle's initial position to the click coordinates
+                        sparkle.style.left = `${clickX}px`;
+                        sparkle.style.top = `${clickY}px`;
+
+                        // Generate random offsets for the trail effect
+                        const xOffset = (Math.random() - 0.5) * 200;
+                        const yOffset = (Math.random() - 0.5) * 200;
+
+                        // Apply the offsets to the CSS custom properties for animation
+                        sparkle.style.setProperty('--x-offset', `${xOffset}px`);
+                        sparkle.style.setProperty('--y-offset', `${yOffset}px`);
+
+                        // Remove the sparkle after its animation is complete
+                        sparkle.addEventListener('animationend', () => {
+                            sparkle.remove();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

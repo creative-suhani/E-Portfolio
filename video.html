@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suhani Agarwal — Self Intro Video</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLp/E2S2W7h2t9qjN7+G91Tz8gU0fWq85z2v6Qx81h5+F2rJz7K8K4v8C3vGgN6w2I3eJt5+p0vB9iCg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* -------------------------------------- */
+        /* -- Global & Base Styles -- */
+        /* -------------------------------------- */
+        :root {
+            --color-light-pink: #f9c5d1;
+            --color-hot-pink: #fbd3e9;
+            --color-lavender: #d8b4f8;
+            --color-light-lavender: #e0c3fc;
+            --color-text-primary: #a55c76;
+            --color-text-secondary: #7a4f5f;
+            --muted: #a58e99;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(-45deg, var(--color-light-pink), var(--color-hot-pink), var(--color-lavender), var(--color-light-lavender));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            color: var(--color-text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ENHANCED: Consistent background overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 120vw;
+            height: 120vh;
+            background: url(hand-drawn-flat-design-simple-flower-outline_548268-9459-removebg-preview.png) no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%) scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(240, 130, 170, 0.2));
+            animation: flowerDrift 30s ease-in-out infinite alternate;
+        }
+
+        /* -------------------------------------- */
+        /* -- Keyframe Animations -- */
+        /* -------------------------------------- */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes flowerDrift {
+            0% { transform: translate(-52%, -48%) scale(1); }
+            100% { transform: translate(-48%, -52%) scale(1.05); }
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulsingGlow {
+            0%, 100% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(246, 154, 203, 0.5); }
+            50% { text-shadow: 0 0 16px rgba(255, 255, 255, 0.9), 0 0 25px rgba(246, 154, 203, 0.8); }
+        }
+        
+        /* -------------------------------------- */
+        /* -- Navigation -- */
+        /* -------------------------------------- */
+        .nav-container {
+            text-align: center;
+            padding-top: 18px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 120;
+        }
+        
+        nav {
+            display: inline-block;
+            background: rgba(255, 240, 245, 0.4);
+            backdrop-filter: blur(14px) saturate(150%);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 6px 15px rgba(213, 137, 179, 0.25), 0 0 10px rgba(186, 85, 211, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        nav ul li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            color: #b955d3;
+            text-decoration: none;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a[aria-current="page"], nav a:hover {
+            background: linear-gradient(90deg, #f69acb, #bb55d4);
+            color: white;
+            box-shadow: 0 4px 20px rgba(246, 154, 203, 0.6), 0 0 10px rgba(187, 85, 212, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        /* -------------------------------------- */
+        /* -- Main Content & Page Structure -- */
+        /* -------------------------------------- */
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 9rem 1rem 4rem;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            margin-bottom: 0.5rem;
+        }
+
+        .lead {
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-text-secondary);
+            animation: pulsingGlow 5s ease-in-out infinite alternate;
+        }
+
+        /* -------------------------------------- */
+        /* -- ENHANCED: Bento Grid Layout -- */
+        /* -------------------------------------- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 3rem;
+        }
+        
+        .grid-item {
+            background: rgba(255, 245, 250, 0.5);
+            backdrop-filter: blur(14px) saturate(120%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(187, 85, 212, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(187, 85, 212, 0.25);
+        }
+
+        .video-main {
+            grid-column: span 2;
+            grid-row: span 2;
+            padding: 0;
+            position: relative; /* Needed for positioning controls */
+            overflow: hidden;
+        }
+        
+        .description-card {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+        
+        .description-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+            font-weight: 700;
+        }
+        
+        .description-card p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* --- ENHANCED Stat Card Styles with Icons --- */
+        .stat-card {
+            grid-column: span 1;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5));
+        }
+
+        .grid-item:hover .stat-icon {
+            transform: scale(1.2) translateY(-5px) rotate(-5deg);
+            filter: drop-shadow(0 0 15px var(--color-hot-pink));
+        }
+        
+        .stat-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+        
+        .stat-card p {
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* -------------------------------------- */
+        /* -- NEW: Custom Video Player UI -- */
+        /* -------------------------------------- */
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1.5rem;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .video-main:hover .video-controls,
+        .video-controls.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .play-pause-btn, .mute-unmute-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .play-pause-btn:hover, .mute-unmute-btn:hover {
+            color: var(--color-hot-pink);
+            transform: scale(1.1);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 0 1rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff69b4, #d8b4f8);
+            border-radius: 5px;
+            transition: width 0.1s linear;
+        }
+
+        .transcript-toggle-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        
+        .transcript-toggle-btn:hover {
+            background-color: white;
+            color: var(--color-text-primary);
+        }
+
+        /* -------------------------------------- */
+        /* -- NEW: Transcript Card Styling -- */
+        /* -------------------------------------- */
+        .transcript-card {
+            grid-column: span 3;
+            max-width: 1000px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            display: none;
+            margin-top: 1.5rem;
+            padding: 2.5rem; /* Increased padding for better visual spacing */
+        }
+
+        .transcript-card.visible {
+            display: block;
+        }
+
+        .transcript-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-text-primary);
+            text-align: center;
+        }
+
+        .transcript-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .transcript-entry:hover {
+            background-color: rgba(255, 245, 250, 0.7);
+            transform: translateY(-2px);
+        }
+        
+        .transcript-entry.active {
+            background: rgba(255, 240, 245, 0.8);
+            border: 2px solid var(--color-text-primary);
+            box-shadow: 0 4px 15px rgba(165, 92, 118, 0.2);
+            font-weight: 600;
+        }
+        
+        .transcript-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            width: 25px;
+            flex-shrink: 0;
+            text-align: center;
+            background: linear-gradient(45deg, var(--color-light-lavender), var(--color-lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGradient 15s ease infinite;
+        }
+
+        .transcript-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--muted);
+            min-width: 130px;
+            flex-shrink: 0;
+            padding-top: 0.4rem;
+        }
+        
+        .transcript-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .transcript-entry.active .transcript-text {
+            color: var(--color-text-primary);
+        }
+
+        /* -------------------------------------- */
+        /* -- NEW: Play overlay for initial state -- */
+        /* -------------------------------------- */
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        .play-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .play-overlay-icon {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            transition: transform 0.2s ease;
+        }
+        .play-overlay:hover .play-overlay-icon {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 820px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .video-main, .description-card, .stat-card, .transcript-card {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .video-main {
+                aspect-ratio: 16 / 9; /* Ensure proper video aspect ratio on mobile */
+            }
+            .video-controls {
+                padding: 0.5rem 1rem;
+            }
+            .play-pause-btn, .mute-unmute-btn {
+                font-size: 1.2rem;
+                padding: 0.2rem;
+            }
+            .progress-container {
+                margin: 0 0.5rem;
+            }
+            .transcript-toggle-btn {
+                padding: 0.3rem 0.8rem;
+                margin-left: 0.5rem;
+            }
+            
+            .transcript-entry {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .transcript-time {
+                min-width: auto;
+            }
+        }
+        
+        /* -------------------------------------- */
+        /* -- Buttons & Dividers -- */
+        /* -------------------------------------- */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #d8b4f8);
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* -------------------------------------- */
+        /* -- Animations & Effects -- */
+        /* -------------------------------------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ENHANCED: Sparkle effect on cursor move */
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: twinkle 1s ease-out forwards;
+            box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(0); opacity: 0; }
+            20% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learning.html">Learnings</a></li>
+                <li><a href="video.html" aria-current="page">Video</a></li>
+                <li><a href="explore.html">Explore</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="page">
+        <header class="page-header reveal">
+            <h2>Self-Introduction Video</h2>
+            <p class="lead">A short video about me, my process, and what I love designing.</p>
+        </header>
+
+        <section class="video-grid reveal">
+            <!-- Main Video Player -->
+            <div class="grid-item video-main">
+                <video id="intro-video" poster="https://placehold.co/1200x675/FBD3E9/A55C76?text=Video+Poster" muted autoplay loop>
+                    <source src="vid.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+                <!-- Play Overlay for Muted Autoplay -->
+                <div class="play-overlay" id="play-overlay">
+                    <i class="fas fa-play play-overlay-icon"></i>
+                </div>
+                <!-- NEW: Custom Video Controls -->
+                <div class="video-controls" id="video-controls">
+                    <button class="play-pause-btn" id="play-pause-btn" aria-label="Play/Pause">
+                        <i class="fas fa-play" id="play-pause-icon"></i>
+                    </button>
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <button class="mute-unmute-btn" id="mute-unmute-btn" aria-label="Mute/Unmute">
+                        <i class="fas fa-volume-mute" id="mute-unmute-icon"></i>
+                    </button>
+                    
+                    <button class="transcript-toggle-btn" id="transcript-toggle-btn">Transcript</button>
+                </div>
+            </div>
+            
+            <!-- Description Card -->
+            <div class="grid-item description-card">
+                <h3>My Creative Journey</h3>
+                <p>This video is a personal invitation into my creative world, sharing the story of my journey and the passions that fuel my design work. For me, design is about more than just aesthetics; it’s about connection, empathy, and solving problems in ways that feel both elegant and human. I’ll walk you through the evolution of my projects, from the raw energy of a first sketch to the rewarding moment a final digital product comes to life. Ultimately, my goal is to capture the essence of my artistic vision and demonstrate the deep-seated dedication I have for creating work that is not only beautiful but truly meaningful.</p>
+            </div>
+            
+            <!-- Stat Card 1: Hobbies -->
+            <div class="grid-item stat-card">
+                <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <h4>Hobbies</h4>
+                <p>Sketching, photography, typography</p>
+            </div>
+            
+            <!-- Stat Card 2: Aspiration -->
+            <div class="grid-item stat-card">
+                <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+                <h4>Aspiration</h4>
+                <p>Become a lead graphic designer</p>
+            </div>
+            
+            <!-- Stat Card 3: Skills -->
+            <div class="grid-item stat-card">
+                <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.94 11c-.04-.32-.1-.64-.19-.95l2.03-1.58c.45-.35.56-.98.24-1.46l-2-3.46c-.32-.48-.95-.62-1.46-.3l-2.43 1.01c-.62-.48-1.3-.88-2.03-1.18L14 2.5c-.1-.55-.6-1-1.18-1h-4c-.58 0-1.08.45-1.18 1L7.64 4.53c-.73.3-1.41.7-2.03 1.18L3.18 4.7c-.5-.31-1.13-.17-1.45.3L.27 8.46c-.32.48-.21 1.11.24 1.46l2.03 1.58c-.09.31-.15.63-.19.95L.27 13c-.45.35-.56.98-.24 1.46l2 3.46c.32.48.95.62 1.46.3l2.43-1.01c.62.48 1.3.88 2.03 1.18L10 21.5c.1.55.6 1 1.18 1h4c.58 0 1.08.45 1.18-1l.19-2.03c.73-.3 1.41-.7 2.03-1.18l2.43 1.01c.5.31 1.13.17 1.45-.3l2-3.46c.32-.48.21-1.11-.24-1.46l-2.03-1.58zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+                <h4>Skills</h4>
+                <p>Adobe Illustrator, Photoshop, Canva</p>
+            </div>
+            <!-- NEW: Transcript Card -->
+            <!-- Transcript Card -->
+            <div class="grid-item transcript-card" id="transcript-card">
+                <h3>Video Transcript</h3>
+                <div class="transcript-entry" data-start="0" data-end="9">
+                    <span class="transcript-number">1</span>
+                    <span class="transcript-time">00:00:00,000 → 00:00:09,000</span>
+                    <span class="transcript-text">
+                        Good morning everyone, my name is Suhani Agarwal. I am currently pursuing a Bachelor of Science in Animation and Gaming, which aligns with my creative investment in a career role.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="9" data-end="17">
+                    <span class="transcript-number">2</span>
+                    <span class="transcript-time">00:00:09,000 → 00:00:17,000</span>
+                    <span class="transcript-text">
+                        I have completed my Higher and Secondary Education from Golden Power Senior School, where I laid a strong academic foundation.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="17" data-end="27">
+                    <span class="transcript-number">3</span>
+                    <span class="transcript-time">00:00:17,000 → 00:00:27,000</span>
+                    <span class="transcript-text">
+                        In terms of achievements, I have earned several certificates from Swayam, including Understanding Discipline, Subject and English Communication, and Every Time in Media.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="27" data-end="33">
+                    <span class="transcript-number">4</span>
+                    <span class="transcript-time">00:00:27,000 → 00:00:33,000</span>
+                    <span class="transcript-text">
+                        I have also successfully completed MyCaptain courses such as Graphic Design and Digital Marketing.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="33" data-end="41">
+                    <span class="transcript-number">5</span>
+                    <span class="transcript-time">00:00:33,000 → 00:00:41,000</span>
+                    <span class="transcript-text">
+                        In terms of strengths and skills, I am proficient in Adobe Illustrator, Adobe Photoshop, Camera work, and Digital Marketing.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="41" data-end="44">
+                    <span class="transcript-number">6</span>
+                    <span class="transcript-time">00:00:41,000 → 00:00:44,000</span>
+                    <span class="transcript-text">
+                        One of my strongest skills is time management.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="44" data-end="56">
+                    <span class="transcript-number">7</span>
+                    <span class="transcript-time">00:00:44,000 → 00:00:56,000</span>
+                    <span class="transcript-text">
+                        In terms of interests, I have a strong passion for sketching, drawing, listening to music, and watching movies, which help inspire my creativity.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="56" data-end="64">
+                    <span class="transcript-number">8</span>
+                    <span class="transcript-time">00:00:56,000 → 00:01:04,000</span>
+                    <span class="transcript-text">
+                        Now, coming to my family background, my mother is a homemaker and she is also a teacher.
+                    </span>
+                </div>
+                <div class="transcript-entry" data-start="64" data-end="69">
+                    <span class="transcript-number">9</span>
+                    <span class="transcript-time">00:01:04,000 → 00:01:09,000</span>
+                    <span class="transcript-text">
+                        My father is a businessman, and I have two younger brothers. Thank you for listening.
+                    </span>
+                </div>
+            </div>
+        </section>
+        
+        <a class="btn reveal" href="explore.html">Next: Explore me!</a>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Staggered Nav Animation ---
+            const navItems = document.querySelectorAll('nav ul li');
+            navItems.forEach((item, i) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, i * 120 + 200);
+            });
+
+            // --- Scroll Reveal using Intersection Observer ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Optional: stop observing once visible
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => observer.observe(el));
+            
+            // --- Mouse trail sparkle effect ---
+            document.addEventListener('mousemove', (e) => {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${e.pageX + (Math.random() - 0.5) * 20}px`;
+                sparkle.style.top = `${e.pageY + (Math.random() - 0.5) * 20}px`;
+                document.body.appendChild(sparkle);
+                setTimeout(() => { sparkle.remove(); }, 1000);
+            });
+
+            // --------------------------------------
+            // -- Custom Video Player Logic --
+            // --------------------------------------
+            const video = document.getElementById('intro-video');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = document.getElementById('play-pause-icon');
+            const playOverlay = document.getElementById('play-overlay');
+            const muteUnmuteBtn = document.getElementById('mute-unmute-btn');
+            const muteUnmuteIcon = document.getElementById('mute-unmute-icon');
+            const progressBar = document.getElementById('progress-bar');
+            const progressContainer = document.getElementById('progress-container');
+            const videoMain = document.querySelector('.video-main');
+            const controls = document.getElementById('video-controls');
+            const transcriptToggleBtn = document.getElementById('transcript-toggle-btn');
+            const transcriptCard = document.getElementById('transcript-card');
+            const transcriptEntries = document.querySelectorAll('.transcript-entry');
+
+
+            // Toggle play/pause
+            const togglePlayPause = () => {
+                if (video.paused || video.ended) {
+                    video.play();
+                    playPauseIcon.classList.remove('fa-play');
+                    playPauseIcon.classList.add('fa-pause');
+                } else {
+                    video.pause();
+                    playPauseIcon.classList.remove('fa-pause');
+                    playPauseIcon.classList.add('fa-play');
+                }
+            };
+
+            playPauseBtn.addEventListener('click', togglePlayPause);
+
+            // Handle initial click on the muted video
+            playOverlay.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false;
+                    muteUnmuteIcon.classList.remove('fa-volume-mute');
+                    muteUnmuteIcon.classList.add('fa-volume-up');
+                    playOverlay.classList.add('hidden');
+                    video.play();
+                    playPauseIcon.classList.remove('fa-play');
+                    playPauseIcon.classList.add('fa-pause');
+                }
+            });
+
+            // Update progress bar AND highlight transcript
+            video.addEventListener('timeupdate', () => {
+                const progress = (video.currentTime / video.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+
+                // Highlight the current transcript entry
+                transcriptEntries.forEach(entry => {
+                    const start = parseFloat(entry.dataset.start);
+                    const end = parseFloat(entry.dataset.end);
+                    if (video.currentTime >= start && video.currentTime < end) {
+                        entry.classList.add('active');
+                    } else {
+                        entry.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Allow seeking by clicking the progress bar
+            progressContainer.addEventListener('click', (e) => {
+                const clickPosition = e.pageX - progressContainer.getBoundingClientRect().left;
+                const newTime = (clickPosition / progressContainer.offsetWidth) * video.duration;
+                video.currentTime = newTime;
+            });
+            
+            // Allow seeking by clicking on a transcript entry
+            transcriptEntries.forEach(entry => {
+                entry.addEventListener('click', () => {
+                    video.currentTime = parseFloat(entry.dataset.start);
+                    if (video.paused) {
+                        togglePlayPause(); // Play the video if it was paused
+                    }
+                });
+            });
+
+
+            // Toggle mute/unmute
+            muteUnmuteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                if (video.muted) {
+                    muteUnmuteIcon.classList.remove('fa-volume-up');
+                    muteUnmuteIcon.classList.add('fa-volume-mute');
+                } else {
+                    muteUnmuteIcon.classList.remove('fa-volume-mute');
+                    muteUnmuteIcon.classList.add('fa-volume-up');
+                }
+            });
+
+            // Show/hide controls on mouse interaction
+            let controlsTimeout;
+            videoMain.addEventListener('mousemove', () => {
+                controls.classList.add('active');
+                clearTimeout(controlsTimeout);
+                controlsTimeout = setTimeout(() => {
+                    if (!video.paused) {
+                        controls.classList.remove('active');
+                    }
+                }, 3000);
+            });
+            controls.addEventListener('mouseenter', () => {
+                clearTimeout(controlsTimeout);
+            });
+            controls.addEventListener('mouseleave', () => {
+                if (!video.paused) {
+                    controlsTimeout = setTimeout(() => {
+                        controls.classList.remove('active');
+                    }, 1000);
+                }
+            });
+
+            // Toggle transcript visibility
+            transcriptToggleBtn.addEventListener('click', () => {
+                transcriptCard.classList.toggle('visible');
+                // Scroll to the transcript section
+                transcriptCard.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // NEW: Add keyboard support for play/pause with the spacebar
+            document.addEventListener('keydown', (e) => {
+                // Check if the spacebar was pressed and the user isn't in an input field
+                if (e.code === 'Space' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                    e.preventDefault(); // Prevent default scroll action
+                    togglePlayPause();
+                }
+            });
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>
